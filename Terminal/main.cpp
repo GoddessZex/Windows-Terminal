@@ -2,17 +2,22 @@
 #include <string>
 #include <iostream>
 
-using namespace std;
-
 int main() {
-    string username = "root";
-    string hostname = "Zex";
+    using namespace std;
+    using sv = std::string_view;
+
+    static constexpr sv username = "root",
+                        hostname = "Zex",
+                        prompt = "$",  // prompt symbol
+                        black_bg = "\033[40m",
+                        color = "\033[1;36m",
+                        ansi_exit = "\033[0m";
+
     string input;
-    string prompt = "$";  // prompt symbol
 
     while (true) {
         // set text color to cyan and background color to black
-        cout << "\033[1;36m\033[40m" << username << "@" << hostname << ":~" << prompt << " ";
+        cout << color << black_bg << username << "@" << hostname << ":~" << prompt << " ";
         // set text color back to white and background color back to black
         cout << "\033[0m";
 
